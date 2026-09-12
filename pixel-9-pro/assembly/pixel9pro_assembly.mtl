@@ -1,0 +1,56 @@
+newmtl case
+Kd 0.160 0.180 0.200
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 20
+d 1
+illum 2
+
+newmtl top_cap
+Kd 0.850 0.450 0.100
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 20
+d 1
+illum 2
+
+newmtl bottom_cap
+Kd 0.850 0.450 0.100
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 20
+d 1
+illum 2
+
+newmtl volume_button
+Kd 0.800 0.150 0.150
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 20
+d 1
+illum 2
+
+newmtl power_button
+Kd 0.800 0.150 0.150
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 20
+d 1
+illum 2
+
+newmtl camera_protector_cap
+Kd 0.200 0.600 0.350
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 20
+d 1
+illum 2
+
+newmtl molle_adapter
+Kd 0.200 0.400 0.750
+Ka 0 0 0
+Ks 0.05 0.05 0.05
+Ns 20
+d 1
+illum 2
+
