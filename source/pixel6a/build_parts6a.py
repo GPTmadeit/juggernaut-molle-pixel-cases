@@ -29,6 +29,10 @@ def cut_cap_holes(man, x0, x1):
         man -= extrude_x(rrect_cs(y0, y1, z0, z1, r), x0, x1)
     return man
 
+# The stock cap's four S8 speaker slots sit at Y -44.22..-32.82.  Keep the erase
+# block to exactly that band: anything wider also plugs the USB cable window.
+SLOT_FILL_Y0, SLOT_FILL_Y1 = -45.5, -31.5
+
 # =============================================================== TOP CAP ======
 tc = to_mf(load("top_cap")).translate([DX, 0, 0])
 tc -= extrude_x(rrect_cs(TOPMIC_Y0-1.0, TOPMIC_Y1+1.0, TOPMIC_Z0-1.0, TOPMIC_Z1+1.0, 0.8),
@@ -38,16 +42,20 @@ save(tc, "top_cap_pixel6a.stl")
 # ============================================================ BOTTOM CAP ======
 bc = to_mf(load("bottom_cap")).translate([-DX, 0, 0])
 P0, P1 = -21.03-DX, -17.40-DX
-bc += box(P0, P1, -50.0, 6.0, 3.30, 6.70)
+bc += box(P0, P1, SLOT_FILL_Y0, SLOT_FILL_Y1, 3.30, 6.70)
 bc = cut_cap_holes(bc, P0-0.5, P1+0.5)
 save(bc, "bottom_cap_pixel6a.stl")
 
 # ================================================ BOTTOM CAP (USB CABLE) ======
 uc = to_mf(load("bottom_cap_for_usb_cable")).translate([-DX, 0, 0])
 U0, U1 = -59.45-DX, -55.82-DX
-uc += box(U0, U1, -50.0, 6.0, 3.30, 6.70)
+uc += box(U0, U1, SLOT_FILL_Y0, SLOT_FILL_Y1, 3.30, 6.70)
 uc = cut_cap_holes(uc, U0-0.5, U1+0.5)
-uc -= extrude_x(rrect_cs(-26.57, -15.47, 1.55, 2.60, 0.3), -61.95-DX-0.5, U1+0.5)
+# The stock cable window (Z 2.45..7.55) was aligned to the S8's USB-C, which sits
+# ~1.5-1.9 mm higher in the pocket than these phones'.  Recut it as one clean
+# window that spans the phone's actual port height, so the cap stops being the
+# narrowest point of the plug corridor.
+uc -= extrude_x(rrect_cs(-27.60, -14.40, 0.80, 7.55, 0.5), -61.95-DX-0.5, U1+0.5)
 save(uc, "bottom_cap_for_usb_cable_pixel6a.stl")
 
 # ==================================================== CAMERA PROTECTOR CAP ====

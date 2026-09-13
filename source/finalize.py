@@ -6,17 +6,31 @@ import numpy as np, trimesh, os, sys, warnings
 warnings.filterwarnings("ignore"); sys.path.insert(0,'.')
 from mf import to_mf, to_tm
 TOL = 0.005
+# finalize is NOT idempotent on its own: simplify() run twice decimates twice.  Record what
+# has already been decimated and skip it, so re-running after a partial rebuild is safe.
+import json
+def _ledger(p):
+    f=os.path.join(p,".finalized.json")
+    try: return json.load(open(f))
+    except Exception: return {}
+def _save(p,led):
+    json.dump(led, open(os.path.join(p,".finalized.json"),"w"), indent=1, sort_keys=True)
+
 ROOT=ROOT_DEFAULT
 SRC=os.path.join(ROOT,"jugg_case","msenturk115","juggernaut-tactical-molle-phone-case")
 for d in ["pixel9a_case","pixel6a_case"]:
     P=os.path.join(ROOT,d)
     for f in sorted(os.listdir(P)):
         if not f.endswith(".stl") or "UNCHANGED" in f or f.startswith("_"): continue
+        led=_ledger(P)
         m=trimesh.load(os.path.join(P,f)); m.merge_vertices()
+        if led.get(f)==len(m.faces):
+            print(f"  {f:44s} already decimated, skipped"); continue
         n0=len(m.faces); M=to_mf(m); v0=M.volume()
         S=M.simplify(TOL); t=to_tm(S); t.merge_vertices()
         assert t.is_watertight and len(t.split(only_watertight=False))==1, f
         t.export(os.path.join(P,f))
+        led[f]=len(t.faces); _save(P,led)
         print(f"  {f:42s} {n0:7d} -> {len(t.faces):6d} tris   dVol {abs(S.volume()-v0):7.3f} mm^3")
 print("\n=== re-verify after decimation ===")
 def L(p):

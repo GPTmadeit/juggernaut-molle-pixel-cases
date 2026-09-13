@@ -42,6 +42,10 @@ def cut_cap_holes(man, x0, x1, dy=0.0):
         man -= extrude_x(cs, x0, x1)
     return man
 
+# The stock cap's four S8 speaker slots sit at Y -44.22..-32.82.  Keep the erase
+# block to exactly that band: anything wider also plugs the USB cable window.
+SLOT_FILL_Y0, SLOT_FILL_Y1 = -45.5, -31.5
+
 # =============================================================== 1. TOP CAP ====
 tc = to_mf(load("top_cap")).translate([DX, 0, 0])
 save(tc, "top_cap_pixel9a.stl")     # its existing vent already lines up with the Pixel's top mic
@@ -49,7 +53,7 @@ save(tc, "top_cap_pixel9a.stl")     # its existing vent already lines up with th
 # ============================================================ 2. BOTTOM CAP ====
 bc = to_mf(load("bottom_cap")).translate([-DX, 0, 0])
 PLATE0, PLATE1 = -21.03 - DX, -17.40 - DX               # -23.73 .. -20.10
-bc += box(PLATE0, PLATE1, -50.0, 6.0, 3.30, 6.70)   # erase the S8 speaker slots
+bc += box(PLATE0, PLATE1, SLOT_FILL_Y0, SLOT_FILL_Y1, 3.30, 6.70)   # erase the S8 speaker slots
 bc = cut_cap_holes(bc, PLATE0 - 0.5, PLATE1 + 0.5)
 save(bc, "bottom_cap_pixel9a.stl")
 
@@ -57,10 +61,14 @@ save(bc, "bottom_cap_pixel9a.stl")
 UOFF = -40.92                                            # this part's own print offset
 uc = to_mf(load("bottom_cap_for_usb_cable")).translate([-DX, 0, 0])
 UP0, UP1 = -59.45 - DX, -55.82 - DX
-uc += box(UP0, UP1, -50.0 + 0, 6.0, 3.30, 6.70)
+uc += box(UP0, UP1, SLOT_FILL_Y0, SLOT_FILL_Y1, 3.30, 6.70)
 uc = cut_cap_holes(uc, UP0 - 0.5, UP1 + 0.5)
 # drop the cable window's lower edge so a plug clears the Pixel's USB-C port
-uc -= extrude_x(rrect_cs(-26.57, -15.47, 1.95, 2.60, 0.3), -61.95 - DX - 0.5, UP1 + 0.5)
+# The stock cable window (Z 2.45..7.55) was aligned to the S8's USB-C, which sits
+# ~1.5-1.9 mm higher in the pocket than these phones'.  Recut it as one clean
+# window that spans the phone's actual port height, so the cap stops being the
+# narrowest point of the plug corridor.
+uc -= extrude_x(rrect_cs(-27.60, -14.40, 0.80, 7.55, 0.5), -61.95 - DX - 0.5, UP1 + 0.5)
 save(uc, "bottom_cap_for_usb_cable_pixel9a.stl")
 
 # =================================================== 4. CAMERA PROTECTOR CAP ===

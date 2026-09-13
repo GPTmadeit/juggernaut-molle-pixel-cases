@@ -99,3 +99,29 @@ The camera shelf runs right to the end of the case, so the lens cap's end wall w
 the case's end face and stood **1.42 mm proud of the top of the phone**. The cap is now cut off
 flush at the case's +X end face — it still wedges on the two tapered side walls and the −X end
 wall, and now measures 0.00 mm³ beyond the case. See `preview/lenscap_flush_before_after.png`.
+
+## Charging port (fixed after first print review)
+
+Two things were wrong with the **`bottom_cap_for_usb_cable_*`** caps:
+
+1. The block that erases the stock S8 speaker slots was cut far too wide (Y −50…6) and ran
+   straight across the cable window, leaving a **3.4 mm bar through the middle of it**. The old
+   slots only occupy Y −44.22…−32.82, so the erase block is now exactly that band.
+2. The stock window (Z 2.45…7.55) was aligned to the **S8's** USB-C, which sits 1.5–1.9 mm
+   higher in the pocket than these phones'. It is now recut as one clean window at Z 0.80…7.55,
+   centred on the actual port.
+
+Measured clear aperture for a plug driven through **cap + case** to the phone's port:
+
+| | before | after |
+|---|---|---|
+| Pixel 9 Pro | 11.0 × 3.25 mm | **13.0 × 4.00 mm** |
+| Pixel 9a | 11.0 × 3.00 mm | **12.5 × 5.00 mm** |
+| Pixel 6a | 10.5 × 3.25 mm | **13.0 × 4.25 mm** |
+
+A USB-C plug shell is 8.3 × 2.6 mm, so it passes with room. A chunky cable overmould
+(~5–6.5 mm tall) may still not seat fully on the 9 Pro and 6a — the remaining limit is a thin
+shelf in the case's cap recess, and removing it only buys another 0.25–0.50 mm, which is not
+worth reprinting a case for. Only the caps changed; the cases are untouched.
+
+See `preview/usb_port_before_after.png`.
