@@ -76,6 +76,10 @@ case and the phone, each grown 0.20 mm — so it cannot foul either, and measure
 stock cap over a full 26 mm withdrawal it adds **+0.0000 mm³** of interference.
 See `pixel-9-pro/preview/topcap_gap_before_after.png`.
 
+On the 6a and 9 Pro the camera shelf also runs right to the end of the case, so the **lens cap
+is trimmed flush** with the case's end face rather than wrapping around it — otherwise it stood
+1.42 mm proud of the top of the phone. See `preview/lenscap_flush_before_after.png`.
+
 ## Verified
 
 For all three phones, by boolean intersection (0.000 mm³):

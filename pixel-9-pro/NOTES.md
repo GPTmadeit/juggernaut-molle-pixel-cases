@@ -92,3 +92,10 @@ foul either. Measured against the untouched cap over a full 26 mm withdrawal swe
 adds **+0.0000 mm³** of interference — it slides in and out exactly as the stock cap did.
 
 See `preview/topcap_gap_before_after.png`.
+
+## Lens cap trimmed flush (added after first print review)
+
+The camera shelf runs right to the end of the case, so the lens cap's end wall wrapped around
+the case's end face and stood **1.42 mm proud of the top of the phone**. The cap is now cut off
+flush at the case's +X end face — it still wedges on the two tapered side walls and the −X end
+wall, and now measures 0.00 mm³ beyond the case. See `preview/lenscap_flush_before_after.png`.

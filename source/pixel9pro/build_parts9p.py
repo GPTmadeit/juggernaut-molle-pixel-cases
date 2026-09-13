@@ -61,7 +61,9 @@ def skirt(g, z0):
                  SHELF_Y0+SHELF_TAPER-g, SHELF_Y1-SHELF_TAPER+g, 4.0+g, z0, SHELF_Z+0.001)
 cavity = shelf(CLR) + skirt(CLR, SHELF_Z-25.0)
 outer  = shelf(CLR+WALL) + skirt(CLR+WALL, SHELF_Z-FLOOR)
-cap = (outer - cavity) ^ box(-500,500,-500,500, SHELF_Z-FLOOR, Z_BACK_WIN)
+# trim the cap flush with the case's +X end face -- the shelf runs right to the end,
+# so an untrimmed cap would stand ~1.4 mm proud of the top of the case
+cap = (outer - cavity) ^ box(-500, CASE_X1, -500,500, SHELF_Z-FLOOR, Z_BACK_WIN)
 case = to_mf(trimesh.load(os.path.join(OUT,"case_pixel9pro.stl")))
 grown = case
 for d in [(0.15,0,0),(-0.15,0,0),(0,0.15,0),(0,-0.15,0),(0,0,-0.15)]:

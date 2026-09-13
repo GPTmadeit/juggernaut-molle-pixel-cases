@@ -41,3 +41,20 @@ back-plate ledge beside the camera opening 2.32 mm · front lip 3.00 mm wide
 
 The 6a case is the sturdier of the two everywhere except the camera band, where the visor's
 width is what dictates the opening.
+
+## Lens cap trimmed flush (added after first print review)
+
+The camera shelf runs right to the end of the case, so the lens cap's end wall wrapped around
+the case's end face and stood **1.42 mm proud of the top of the phone**. The cap is now cut off
+flush at the case's +X end face — it still wedges on the two tapered side walls and the −X end
+wall, and now measures 0.00 mm³ beyond the case. See `preview/lenscap_flush_before_after.png`.
+
+## Top-cap tongue (added after first print review)
+
+The camera slide channel has to run out through the top-cap socket, otherwise the phone can't
+be slid in with the cap off. That left a **1.70 mm** open trench between the cap's underside and
+the channel floor, open at the case's end face. The top cap now carries a tongue that plugs it,
+shaped by boolean (trench box minus the case and the phone, each grown 0.20 mm) so it cannot
+foul either. Against the untouched cap over a full 26 mm withdrawal sweep the tongue adds
+**+0.0000 mm³** of interference. The case itself is unchanged.
+See `../pixel-9-pro/preview/topcap_gap_before_after.png`.

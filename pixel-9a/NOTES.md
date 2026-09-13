@@ -36,3 +36,13 @@ Phone: 154.70 × 73.30 × 8.90 mm, 12.03 mm corner radius, camera bar 31.2 × 18
 side walls 1.90 mm (1.50 mm across the button relief band) · back plate 1.50 mm
 (1.40 mm under the runway; one 1.7 mm-wide bridge at x 126.8–128.5 is 0.80 mm) ·
 button flange shoulder 0.70 mm · front lip 3.00 mm wide
+
+## Top-cap tongue (added after first print review)
+
+The camera slide channel has to run out through the top-cap socket, otherwise the phone can't
+be slid in with the cap off. That left a **0.70 mm** open trench between the cap's underside and
+the channel floor, open at the case's end face. The top cap now carries a tongue that plugs it,
+shaped by boolean (trench box minus the case and the phone, each grown 0.20 mm) so it cannot
+foul either. Against the untouched cap over a full 26 mm withdrawal sweep the tongue adds
+**+0.0000 mm³** of interference. The case itself is unchanged.
+See `../pixel-9-pro/preview/topcap_gap_before_after.png`.

@@ -78,7 +78,7 @@ shell = hood(CLR + WALL)
 shell += rrect(CO_X0 - HOOD_FOOT - CLR - WALL, CO_X1 + HOOD_FOOT + CLR + WALL,
                CO_Y0 - HOOD_FOOT - CLR - WALL, CO_Y1 + HOOD_FOOT + CLR + WALL,
                CO_R + HOOD_FOOT + CLR + WALL, Z_HOOD - FLOOR, Z_HOOD + 0.001)
-cap = (shell - cavity) ^ box(-500, 500, -500, 500, Z_HOOD - FLOOR, Z_BACK_WIN)
+cap = (shell - cavity) ^ box(-500, CASE_X1, -500, 500, Z_HOOD - FLOOR, Z_BACK_WIN)
 # grip ribs on the outside of the cap floor
 for i in range(-4, 5):
     cap -= box(CO_X0 - 40, CO_X1 + 40, CO_Y0 + i * 3.6 - 0.6, CO_Y0 + i * 3.6 + 0.6,
