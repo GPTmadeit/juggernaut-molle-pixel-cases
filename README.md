@@ -89,6 +89,14 @@ On the 6a, 9 Pro and Pixel 10 the camera shelf also runs right to the end of the
 is trimmed flush** with the case's end face rather than wrapping around it — otherwise it stood
 1.42 mm proud of the top of the phone. See `preview/lenscap_flush_before_after.png`.
 
+The MOLLE adapter's two arms lie along the −X end of the camera shelf. On the 9 Pro and Pixel 10
+the lens cap wraps that end, so since **v1.1.1** it is **notched over each arm** (0.20 mm clear) and
+stays on while the case is clipped into the adapter. The case also snaps in and out with the cap on.
+Before that, the 9 Pro cap overlapped the arms by 11.7 mm³, and the Pixel 10 cap caught them as the
+case clipped in. The 9a and 6a caps never reached the arms. `source/verify_lenscaps.py` checks every
+kit, seated and over the full 12 mm snap travel. See
+`pixel-9-pro/preview/lenscap_mount_before_after.png`.
+
 ## Verified
 
 For all four phones, by boolean intersection (0.000 mm³):
@@ -121,6 +129,7 @@ model at `$JUGG_ROOT/p10_src/Pixel10.stl`:
 
 ```bash
 python source/pixel10/build10.py && python source/pixel10/verify10_all.py
+python source/verify_lenscaps.py           # every kit's lens cap vs the adapter, from the repo
 python source/pixel10/preview10.py
 KITS=pixel10 INCLUDE_PHONE=0 python source/assembly.py
 ```

@@ -100,6 +100,22 @@ the case's end face and stood **1.42 mm proud of the top of the phone**. The cap
 flush at the case's +X end face — it still wedges on the two tapered side walls and the −X end
 wall, and now measures 0.00 mm³ beyond the case. See `preview/lenscap_flush_before_after.png`.
 
+## Lens cap notched for the MOLLE adapter (v1.1.1)
+
+The adapter's two arms (x < 97.34, z −5.55…−3.10) lie along the −X end of the camera shelf, and the
+cap's −X wall ran straight through both of them: **11.7 mm³** of overlap. The cap could not stay on
+while the case was clipped into the adapter. The wall is now **notched over each arm**, full
+thickness, from the rim down to 0.20 mm below the arm (y −55.3…−41.4 and −0.7…13.2). The wall
+under that, the outer ring and the grip ribs are untouched. Between the notches the cap still
+wedges on the −X wall, as before.
+
+Checked: cap ∩ adapter **0.000 mm³** seated, and 0.000 over the case's whole 12 mm snap-in travel
+with the cap on. Cap ∩ case 0.000. One watertight body. The cap is 1054.7 mm³, down from 1170.5.
+
+The 9 Pro build inputs are no longer around, so `source/pixel9pro/fix_lenscap_mount9p.py` applies
+the cut to the committed STL using `source/lenscap_mount.py`, the same code the Pixel 10 build uses.
+See `preview/lenscap_mount_before_after.png`.
+
 ## Charging port (fixed after first print review)
 
 Two things were wrong with the **`bottom_cap_for_usb_cable_*`** caps:

@@ -39,6 +39,13 @@ for n, p in parts.items():
 for n in ["volume_button","power_button","camera_protector_cap"]:
     rep(MT, parts[n], f"mount x {n}")
 
+# the case clips into the adapter along Z: with the lens cap on, the cap must clear the arms
+# over the whole snap travel, not just when seated
+lc = parts["camera_protector_cap"]
+w = max(((lc.translate([0,0,float(dz)]) ^ MT).volume(), dz) for dz in np.arange(0, 12.01, 0.1))
+ok = w[0] < 0.01; bad += [] if ok else ["lens cap snap-in"]
+print(f"  {'mount x lens cap, case snapped in/out 0-12 mm':46s}{w[0]:9.4f} mm^3  {'OK' if ok else '<-- CLASH'}")
+
 print("\n=== seated phone at the extremes of its clearance ===")
 for dy, dz, lab in [(0.44,0,"+Y"),(-0.30,0,"-Y (relief limit)"),(0,0.29,"+Z lifted"),
                     (0.44,0.29,"+Y +Z"),(-0.30,0.29,"-Y +Z")]:

@@ -143,10 +143,11 @@ outer  = shelf(CLR+WALL) + skirt(CLR+WALL, SHELF_Z-FLOOR)
 # trimmed flush with the case's +X end face, like the 9 Pro's
 cap = (outer - cavity) ^ box(-500, CASE_X1, -500, 500, SHELF_Z-FLOOR, Z_BACK_WIN)
 cap -= grow(CASE, 0.15)                   # let the rim sit on the real back profile
-# the cap must also stay on while the case is clipped into the MOLLE adapter: the adapter's
-# arms pass right beside the shelf's -X end (the 9 Pro cap overlaps them by 11.7 mm^3)
+# the cap must also stay on while the case is clipped into the MOLLE adapter, and the case
+# must snap in and out with the cap on: the adapter's two arms lie along the shelf's -X end
+from lenscap_mount import clear_mount
 MOUNT = to_mf(trimesh.load(os.path.join(REPO, "shared-mount", "mount.stl")))
-cap -= grow(MOUNT, 0.20)
+cap = clear_mount(cap, CASE, MOUNT)
 for i in range(-5, 6):                    # grip ribs
     cap -= box(-500, 500, (SHELF_Y0+SHELF_Y1)/2 + i*4.2-0.6, (SHELF_Y0+SHELF_Y1)/2 + i*4.2+0.6,
                SHELF_Z-FLOOR-0.01, SHELF_Z-FLOOR+0.45)

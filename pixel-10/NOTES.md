@@ -48,7 +48,7 @@ openings are cut oversize like the 9 Pro's.
 | 7 | Bottom wall refilled, then recut: **two speaker openings** (y −44.67…−32.29 and −9.71…2.67) and the same generous USB-C | The Pixel 10 has a grille on each side of the USB-C. The 9 Pro's mic and second hole are closed off. |
 | 8 | Both bottom caps: the 9 Pro's holes closed, and **two rows of four slots** cut over the grilles | Same as above. The cable cap keeps the 9 Pro's single clean USB window. |
 | 9 | Top cap: the 9 Pro's tongue widened to the new channel | It still adds **+0.0000 mm³** of interference over a full 26 mm withdrawal. |
-| 10 | Lens cap rebuilt around the new shelf **and cut clear of the MOLLE adapter** (0.20 mm) | It now stays on while the case is in the adapter. The 9 Pro's lens cap overlaps the adapter's arms by 11.7 mm³; this one overlaps them by 0. |
+| 10 | Lens cap rebuilt around the new shelf and **notched over the MOLLE adapter's two arms** (0.20 mm clear, v1.1.1) | It stays on while the case is in the adapter, and the case snaps in and out with it on. Under each arm, the ring segment is moved just past the arm at full 1.3 mm width. v1.1.0 cleared the arms only when seated: it caught them as the case clipped in (14.5 mm³), and left a 0.3 mm strip above each arm. See `preview/lenscap_mount_before_after.png`. |
 
 The top mic (y −44.98…−43.69) falls inside the stock top cap's vent (y −46.54…−43.54), the
 same as on the 9 Pro, so the top cap needs no new hole. It is 99.9 % open.
@@ -72,7 +72,8 @@ the 9 Pro, 9a, 6a and Pixel 10 cases.
 * case ∩ phone seated, and shifted to every extreme of its clearance (±X, +Y, −Y to the relief, +Z)
 * the phone slid in from the +X end in 2 mm steps over the full length, at five clearance corners
 * case ∩ and phone ∩ both bottom caps, the top cap, and both plungers
-* mount ∩ both plungers and the lens cap
+* mount ∩ both plungers and the lens cap, and the lens cap over the case's whole 12 mm snap-in
+  travel into the adapter
 * the camera bar's real outline extruded straight out through the back: nothing in the way
 * both grilles and the USB-C 100 % open through the case. With caps on, the grilles are 87 %
   open; with the cable cap, the USB-C is 100 % open.
