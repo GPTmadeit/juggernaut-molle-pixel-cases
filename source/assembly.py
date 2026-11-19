@@ -21,7 +21,10 @@ KITS = {
     "pixel9pro": dict(dir="pixel9pro_case", tag="pixel9pro", phone="_phone9pro_in_case.stl"),
     "pixel9a":   dict(dir="pixel9a_case",   tag="pixel9a",   phone="_phone9a_in_case.stl"),
     "pixel6a":   dict(dir="pixel6a_case",   tag="pixel6a",   phone="_phone6a_in_case.stl"),
+    "pixel10":   dict(dir="pixel10_case",   tag="pixel10",   phone="_phone10_in_case.stl"),
 }
+if os.environ.get("KITS"):                       # e.g. KITS=pixel10 to build just one
+    KITS = {k: v for k, v in KITS.items() if k in os.environ["KITS"].split(",")}
 # name -> (file pattern, colour, extra translation)
 PARTS = [
     ("case",                 "case_{tag}.stl",                     (0.16,0.18,0.20), None),
@@ -31,7 +34,10 @@ PARTS = [
     ("power_button",         "power_button_{tag}.stl",             (0.80,0.15,0.15), None),
     ("camera_protector_cap", "camera_protector_cap_{tag}.stl",     (0.20,0.60,0.35), None),
 ]
-EXTRA = [("molle_adapter", os.path.join(SRC, "mount.stl"), (0.20,0.40,0.75))]
+_MOUNT = os.path.join(SRC, "mount.stl")
+if not os.path.exists(_MOUNT):                   # the repo carries an identical, unmodified copy
+    _MOUNT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "shared-mount", "mount.stl")
+EXTRA = [("molle_adapter", _MOUNT, (0.20,0.40,0.75))]
 
 def load(p):
     m = trimesh.load(p); m.merge_vertices(); return m
